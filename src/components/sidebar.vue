@@ -8,7 +8,7 @@
 
                     </v-img>
                 </v-avatar>
-                <h4 class="text-white bg-dark">redoykumar0@gmail.com</h4>
+                <h6 class="text-white">redoykumar0@gmail.com</h6>
             </div>
 
         </v-img>

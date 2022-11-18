@@ -98,36 +98,122 @@
                         Week 3: MEASURE - Statistics Review
                         Review of random variables and probability distributions used commonly in quality engineering,
                         such as Binomial, Poisson, and Exponential. Cover descriptive statistics, emphasizing the
-                        importance of clearly communicating the results of your project.<br/><br/>
+                        importance of clearly communicating the results of your project.<br /><br />
                         Week 4: MEASURE - Normal
                         Distribution
                         Learn the characteristics of the Normal Distribution and how to use the Standard Normal to
                         calculate probabilities related to normally distributed variables. Cover the Central Limit
-                        Theorem, and how it relates to sampling theory.<br/><br/>
+                        Theorem, and how it relates to sampling theory.<br /><br />
                         Week 5: MEASURE - Process Mapping
                         Introduce Process Mapping, including SIPOC and Value Stream Mapping. We identify the
-                        Critical-to-Quality characteristic for a Six Sigma project<br/><br/>
+                        Critical-to-Quality characteristic for a Six Sigma project<br /><br />
                         Week 6: MEASURE - Measurement System
                         Analysis
                         Learn the basics of Measurement Theory and Sampling Plans, including
-                        Precision, Accuracy, Linearity, Bias, Stability, Gage Repeatability & Reproducibility<br/><br/>
+                        Precision, Accuracy, Linearity, Bias, Stability, Gage Repeatability &
+                        Reproducibility<br /><br />
                         Week 7:
                         MEASURE - Process Capability
                         Introduction to Process Capability and the metrics CP/CPK for establishing our baseline process
-                        performance.<br/><br/>
+                        performance.<br /><br />
                         Week 8: Quality Topics and Course Summary Cover the basics of Tolerance Design and
                         the risk assessment tool failure Mode and Effects Analysis (FMEA).
                         Review the complete Six Sigma Roadmap before summarizing and closing the course.
                     </p>
                 </v-sheet>
+                <v-sheet class="pa-2 ma-2">
+                    <v-card>
+                        <v-tabs v-model="tab" bg-color="muted">
+                            <v-tab value="Subject">Subject</v-tab>
+                            <v-tab value="two">Student</v-tab>
+                            <v-tab value="three">Professores</v-tab>
+                        </v-tabs>
+
+                        <v-card-text>
+                            <v-window v-model="tab">
+                                <v-window-item value="Subject">
+                                    <v-container fluid>
+                                        <v-row>
+                                            <v-col cols="12">
+                                                <v-combobox v-model="select" :items="Subject" label="Add more Subjects"
+                                                    multiple>
+                                                    <template v-slot:selection="data">
+                                                        <v-chip :key="JSON.stringify(data.item)" v-bind="data.attrs"
+                                                            :model-value="data.selected" :disabled="data.disabled"
+                                                            size="small"
+                                                            @click:close="data.parent.selectItem(data.item)">
+                                                            <template v-slot:prepend>
+                                                                <v-avatar class="bg-accent text-uppercase" start>{{
+                                                                        data.item.title.slice(0, 1)
+                                                                }}</v-avatar>
+                                                            </template>
+                                                            {{ data.item.title }}
+                                                        </v-chip>
+                                                    </template>
+                                                </v-combobox>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+                                </v-window-item>
+
+                                <v-window-item value="two">
+                                    <v-container fluid>
+                                        <v-row>
+                                            <v-col cols="12">
+                                                <v-combobox v-model="select1" :items="student" label="Add more Student"
+                                                    multiple>
+                                                    <template v-slot:selection="data">
+                                                        <v-chip :key="JSON.stringify(data.item)" v-bind="data.attrs"
+                                                            :model-value="data.selected" :disabled="data.disabled"
+                                                            size="small"
+                                                            @click:close="data.parent.selectItem(data.item)">
+                                                            <template v-slot:prepend>
+                                                                <v-avatar class="bg-accent text-uppercase" start>{{
+                                                                        data.item.title.slice(0, 1)
+                                                                }}</v-avatar>
+                                                            </template>
+                                                            {{ data.item.title }}
+                                                        </v-chip>
+                                                    </template>
+                                                </v-combobox>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+                                </v-window-item>
+
+                                <v-window-item value="three">
+                                    <v-container fluid>
+                                        <v-row>
+                                            <v-col cols="12">
+                                                <v-combobox v-model="select2" :items="professors" label="Add more Profesores"
+                                                    multiple>
+                                                    <template v-slot:selection="data">
+                                                        <v-chip :key="JSON.stringify(data.item)" v-bind="data.attrs"
+                                                            :model-value="data.selected" :disabled="data.disabled"
+                                                            size="small"
+                                                            @click:close="data.parent.selectItem(data.item)">
+                                                            <template v-slot:prepend>
+                                                                <v-avatar class="bg-accent text-uppercase" start>{{
+                                                                        data.item.title.slice(0, 1)
+                                                                }}</v-avatar>
+                                                            </template>
+                                                            {{ data.item.title }}
+                                                        </v-chip>
+                                                    </template>
+                                                </v-combobox>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+                                </v-window-item>
+                            </v-window>
+                        </v-card-text>
+                    </v-card>
+                </v-sheet>
             </v-col>
         </v-row>
 
-        <v-row no-gutters>
+        <!-- <v-row no-gutters>
             <v-col>
-                <v-sheet class="pa-2 ma-2">
-                    .v-col-auto
-                </v-sheet>
             </v-col>
 
             <v-col cols="2">
@@ -141,7 +227,7 @@
                     .v-col-auto
                 </v-sheet>
             </v-col>
-        </v-row>
+        </v-row> -->
     </v-container>
 </template>
 
@@ -150,6 +236,7 @@ export default {
     name: "vue-courses",
     data: () => ({
         show: false,
+        tab: 'option-1',
         item: [
             {
                 text: 'Dashboard',
@@ -161,6 +248,42 @@ export default {
                 disabled: false,
                 href: 'breadcrumbs_link_1',
             }
+        ],
+        select: ['Computer Engineering.',
+            'Computer Forensics.',],
+        Subject: [
+            'Computer Engineering.',
+            'Computer Forensics.',
+            'Computer Networking.',
+            'Computer Programming.',
+            'Cyber Security.',
+            'Database Administration.',
+            'Information Security.',
+            'Information Technology.',
+        ],
+        select1: ['Mohi Reza',
+            'Sajan Das',],
+        student: [
+            'Md. Ahsan Nahiyan.',
+            'Abu Tanvir Khan.',
+            'Rakibul Islam Chowdhury',
+            'Computer Programming.',
+            'Md. Jaber Al Nahian',
+            'Mohi Reza',
+            'Sajan Das',
+            'Md. Saidur Rahman Kohinoor',
+        ],
+        select2: [  'Md Sharjis Ibne Wadud',
+            'Wordh Ul Hasan',],
+        professors: [
+            'Md. Bakiuzzaman Mohon',
+            'Md. Anwar Hossen',
+            'Sanjana Ruhani Tammim',
+            'Md Sharjis Ibne Wadud',
+            'Wordh Ul Hasan',
+            'Md. Abdur Rahman Emad',
+            'Md. Siratul Islam',
+            'Sanjina Mostafa',
         ],
     })
 

@@ -71,9 +71,11 @@
                 <v-list-item v-for="(item, i) in items1" :key="i" :value="item" active-color="primary">
                     <template v-slot:prepend>
                         <v-icon :icon="item.icon"></v-icon>
-                    </template>
-
-                    <v-list-item-title v-text="item.text"></v-list-item-title>
+                    </template>                
+                    <router-link v-if="item.text=='Logout'" to="/Sign_in" style="text-decoration: none; color: inherit;">
+                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                    </router-link>
+                    <v-list-item-title v-else v-text="item.text"></v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>

@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-if="drawer">
+    <v-navigation-drawer v-if="drawer" class="d-flex">
         <v-img
             src="https://media.istockphoto.com/id/1318957901/vector/the-green-background-with-a-white-gradient-is-perfect-for-those-of-you-who-are-looking-for-a.jpg?s=612x612&w=0&k=20&c=EXWdCg9600DkVRDKd7YkqOlXFZpC8EiFtSwUlJ8xaqE=">
             <div class="text-center mt-7">

@@ -1,4 +1,7 @@
 <template>
+    <div>
+        <v-breadcrumbs :items="items" divider="-"></v-breadcrumbs>
+    </div>
     <div class="q-pa-md">
         <q-table :grid="$q.screen.xs" title="Professors" :rows="data.users" :columns="columns" row-key="name"
             :filter="filter" :pagination="initialPagination">
@@ -12,8 +15,9 @@
             <template v-slot:body-cell-Action="props">
                 <q-td :props="props">
                     <div>
-                        <q-btn class="q-m-11" round size="xs" color="primary" icon="visibility" />
-                        <q-btn class="q-ml-xs q-mr-xs" round size="xs" color="secondary" icon="edit" />
+                        <router-link to="/ViewProfessors" style="text-decoration: none; color: inherit;">
+                            <q-btn class="q-ml-xs q-mr-xs" round size="xs" color="secondary" icon="edit" />
+                        </router-link>
                         <q-btn @click="deleteUser(props.row.id)" round size="xs" color="amber" glossy text-color="black"
                             icon="delete" />
                     </div>
@@ -21,11 +25,19 @@
                 </q-td>
             </template>
             <template v-slot:top-right>
+
                 <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
                     <template v-slot:append>
                         <q-icon name="search" />
                     </template>
                 </q-input>
+                <router-link to="/AddProfessors" style="text-decoration: none; color: inherit;">
+                    <v-btn class="mx-2" fab dark color="indigo">
+                        <v-icon dark>
+                            mdi-plus
+                        </v-icon>
+                    </v-btn>
+                </router-link>
             </template>
         </q-table>
     </div>
@@ -52,13 +64,26 @@ const columns = [
     { name: 'gender', label: 'Gender', field: 'gender' },
     { name: 'email', label: 'Email', field: 'email' },
     { name: 'birthDate', label: 'Birth Date', field: 'birthDate' },
+    { name: 'Salary', label: 'Salary', field: 'height' },
     { name: 'Action', label: 'Action', field: 'Action' },
 ]
 
 export default {
     name: 'Professors-vue',
     data: () => ({
-        data: {}
+        data: {},
+        items: [
+            {
+                text: 'Dashboard',
+                disabled: false,
+                href: 'breadcrumbs_dashboard',
+            },
+            {
+                text: 'Professors List',
+                disabled: false,
+                href: 'breadcrumbs_link_1',
+            }
+        ],
     }),
     async created() {
         // GET request using fetch with async/await
@@ -68,6 +93,7 @@ export default {
         console.log(data);
     },
     methods: {
+
         deleteUser: function (id) {
             this.data.users = this.data.users.filter(function (obj) {
                 return obj.id !== id;

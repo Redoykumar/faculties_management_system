@@ -36,6 +36,8 @@
       </v-col>
     </v-row>
 
+
+
   </div>
 </template>
   
@@ -47,12 +49,12 @@ export default {
   data() {
     return {
       activityLog: [
-        { title: 'Total Products', amount: 50, icon: 'mdi-account', color: 'cyan lighten-3' },
-        { title: 'Total Customer', amount: 3433, icon: 'mdi-account-group-outline', color: 'green darken-2' },
-        { title: 'Total Sale', amount: 3433, icon: 'mdi-account-group-outline', color: 'blue-grey darken-1' },
+        { title: 'Total Professor', amount: 50, icon: 'mdi-account', color: 'cyan lighten-3' },
+        { title: 'Total Student', amount: 3433, icon: 'mdi-account-group-outline', color: 'green darken-2' },
+        { title: 'Total Course', amount: 3433, icon: 'mdi-account-group-outline', color: 'blue-grey darken-1' },
         {
-          title: 'Pending Orders',
-          amount: 3433,
+          title: 'New student',
+          amount: 25,
           icon: 'mdi-account-group-outline',
           color: 'deep-orange darken-1'
         },

@@ -71,9 +71,11 @@
                 <v-list-item v-for="(item, i) in items1" :key="i" :value="item" active-color="primary">
                     <template v-slot:prepend>
                         <v-icon :icon="item.icon"></v-icon>
-                    </template>
-
-                    <v-list-item-title v-text="item.text"></v-list-item-title>
+                    </template>                
+                    <router-link v-if="item.text=='Logout'" to="/Sign_in" style="text-decoration: none; color: inherit;">
+                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                    </router-link>
+                    <v-list-item-title v-else v-text="item.text"></v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
@@ -88,31 +90,31 @@ export default {
             { type: 'subheader', title: 'Today' },
             {
                 prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-                title: 'Brunch this weekend?',
+                title: 'Enroll in a Course?',
                 subtitle: `<span class="text-primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
             },
             { type: 'divider', inset: true },
             {
                 prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-                title: 'Summer BBQ',
+                title: 'Enroll in a Course',
                 subtitle: `<span class="text-primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
             },
             { type: 'divider', inset: true },
             {
                 prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-                title: 'Oui oui',
+                title: 'Enroll in a Course',
                 subtitle: '<span class="text-primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
             },
             { type: 'divider', inset: true },
             {
                 prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-                title: 'Birthday gift',
+                title: 'Enroll in a Course',
                 subtitle: '<span class="text-primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
             },
             { type: 'divider', inset: true },
             {
                 prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-                title: 'Recipe to try',
+                title: 'Enroll in a Course',
                 subtitle: '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
             },
         ],
